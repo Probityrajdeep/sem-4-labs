@@ -25,3 +25,4 @@ def cong_solution(a,b,m):
 cong_solution(a,b,m)
 #fsafsafs
 #you are great
+#i love coding
