@@ -1,5 +1,7 @@
-a = int(input("Enter the value of a = "))
-b = int(input("Enter the value of b = "))
+#solve the following congruence equation 11x ≡ 22 (mod 33)
+import math
+a = int(input("Enter the value of a = "))   
+b = int(input("Enter the value of b = "))   
 m = int(input("Enter the value of m = "))
 
 def gcd(a,b):
@@ -22,3 +24,4 @@ def cong_solution(a,b,m):
         print(f"The equation has {d} solution \nand the solution is x = {final_solution} (mod{m}).")
 cong_solution(a,b,m)
 #fsafsafs
+#you are great
