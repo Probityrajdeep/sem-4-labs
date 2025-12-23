@@ -23,6 +23,4 @@ def cong_solution(a,b,m):
                 break
         print(f"The equation has {d} solution \nand the solution is x = {final_solution} (mod{m}).")
 cong_solution(a,b,m)
-#fsafsafs
-#you are great
-#i love coding
+#11x ≡ 22 (mod 33)
