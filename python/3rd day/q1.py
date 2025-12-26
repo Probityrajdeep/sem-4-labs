@@ -13,4 +13,5 @@ if d == 1:
 elif b % d == 0:
     print(f"The equation {a}x ≡ {b} (mod {m}) has {d} solutions.")
 else:
+    
     print(f"Solution of the equation {a}x ≡ {b} (mod {m}) does not exist.")
