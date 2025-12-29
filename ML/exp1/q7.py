@@ -1,6 +1,5 @@
 # Find eigen value and eigen vector of a matrix using scipy
 from scipy import linalg
-import numpy as np
 
 print("\n---- Eigen using SciPy ----")
 eig_val_sp, eig_vec_sp = linalg.eig(matrix)
