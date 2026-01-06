@@ -1,3 +1,5 @@
+import numpy as np
+import sympy as sp
 def upper_triangular(matrix):
     rows, cols = len(matrix), len(matrix[0])
 
