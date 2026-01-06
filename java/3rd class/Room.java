@@ -3,8 +3,8 @@ import java.util.Scanner;
 class Room {
     float length, breadth;
 
-    float area(float l, float b) {
-        length = l;
+    float area(float a, float b) {
+        length = a;
         breadth = b;
         return length * breadth;
     }
@@ -13,11 +13,11 @@ class Room {
         Room r = new Room();
 
         System.out.print("Enter length: ");
-        float l = sc.nextFloat();
+        float a = sc.nextFloat();
 
         System.out.print("Enter breadth: ");
         float b = sc.nextFloat();
 
-        System.out.println("Area of the room: " + r.area(l, b));
+        System.out.println("Area of the room: " + r.area(a, b));
     }
 }
