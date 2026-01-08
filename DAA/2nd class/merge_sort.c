@@ -36,10 +36,10 @@ int main() {
     printf("Enter number of elements: ");
     scanf("%d", &n);
 
-    printf("Enter elements:\n");
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++){
+        printf("Enter %d elements:",i+1);
         scanf("%d", &a[i]);
-
+    }
     mergeSort(a, 0, n - 1);
 
     printf("Sorted array:\n");
