@@ -19,7 +19,6 @@ plt.show()
 #-----------------------------
 #Line Plot
 #-----------------------------
-#line plot
 plt.figure()
 plt.plot(df["Student_ID"],df["Marks"])
 plt.xlabel("Student ID")
