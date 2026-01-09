@@ -7,4 +7,9 @@ data = {
     "Attendance": [80,90,70,95,85]
 }
 df =pd.DataFrame(data)
-print(data)
+plt.figure()
+plt.bar(df["Student_ID"],df["Marks"])
+plt.xlabel("Student ID")
+plt.ylabel("Marks")
+plt.title("Bar Chart of Student Marks")
+plt.show()
