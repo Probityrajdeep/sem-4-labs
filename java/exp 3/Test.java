@@ -11,12 +11,13 @@ class Test {
         System.out.print("Enter second integer: ");
         int b = sc.nextInt();
 
-        int result = add(a, b);   // calling add function
-        return result;           // returning result to main
+        int result = add(a, b);
+        sc.close();  
+        return result;
     }
 
     int add(int x, int y) {
-        return x + y;            // returns sum to input()
+        return x + y;           
     }
 
     public static void main(String[] args) {

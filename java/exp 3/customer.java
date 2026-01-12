@@ -1,6 +1,6 @@
 class customer{
     int id = 101;
-    String name = "Rajdeep";
+    String name = "Raj";
     double balance = 5000;
 
     void displayCustomerDetail() {
