@@ -1,6 +1,6 @@
 import numpy as np
-A = np.array([[1, 1], [1, -1]])
-B = np.array([3, 1])
+A = np.array([[4, 1], [5, -2]])
+B = np.array([50, 30])
 
 det=np.linalg.det(A)
 print("Determinant of A= {int(det)}")
