@@ -1,3 +1,5 @@
+// Initialy build a max heap of elements in arr
+// The root element(Arr[1]) will contain largest element of Arr after that, swap this element will contain 
 #include <stdio.h>
 
 void heapify(int a[], int n, int i) {
