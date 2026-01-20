@@ -9,5 +9,5 @@ def diagonally_dominant(A):
             return False
     return True
 
-A=[[4, 1, 1],[2, 5, 1],[1, 1, 3]]
+A=[[1, 2, 3],[4, 5, 6],[7, 8, 9]]
 print("diagonally dominant:", diagonally_dominant(A))
