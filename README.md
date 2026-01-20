@@ -72,31 +72,6 @@ You'll find well-commented and organized solutions that help you **understand lo
 | Networking | Protocol experiments, CN simulations |
 | Physics | Physics calculation sheets & code |
 
----
-
-## 📝 How to Use
-
-1. **Clone this repo**  
-   ```bash
-   git clone https://github.com/Probityrajdeep/sem-4-labs.git
-Go to your desired folder
-Copy code
-Bash
-cd sem-4-labs/java
-Open & run specific lab code
-🤝 Contribution
-Want to add better documentation or improve code?
-Feel free to create a PR ❤️!
-🧑‍💻 About Me
-📌 Rajdeep Mishra — 2nd Year Engineering
-✨ Passionate about coding, cybersecurity & IoT
-📫 Connect: https://github.com/Probityrajdeep
-�
-⭐ *If this repo helped you, don’t forget to give it a star!* ⭐ 
-```
-
-
-
 
 # 📚 Semester 4 Labs
 
