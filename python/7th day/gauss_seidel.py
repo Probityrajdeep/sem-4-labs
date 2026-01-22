@@ -7,5 +7,5 @@ def gauss_sedel(a1,b1,c1,d1, a2,b2,c2,d2, a3,b3,c3,d3):
     return x,y,z
 
 n=2
-x_n,y_n,z_n=gauss_sedel(4,-1,0,3, -1,4,-1,7, 0,-1,4,5)
+x_n,y_n,z_n=gauss_sedel(5,2,1,12, 3,8,2,25, 2,3,9,31)
 print("The value of x,y,z are:", x_n, y_n, z_n)
