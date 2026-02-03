@@ -17,6 +17,7 @@ int main() {
     m = strlen(X);
     n = strlen(Y);
 
+
     // Build LCS table
     for(i = 0; i <= m; i++) {
         for(j = 0; j <= n; j++) {
