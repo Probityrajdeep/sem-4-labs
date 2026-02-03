@@ -8,9 +8,9 @@ def power_method(A,X0,n):
     eigenvalue = np.dot(AX,X) / np.dot(X,X) # Rayleigh quotient
     return eigenvalue, X
 
-A=np.array([[2,-12],[1,-5]]) # for example-1
-X0=np.array([1,1]) # OR X=np.random.rand(2)
-n = 10000
+A=np.array([[5,1,2],[1,4,1],[2,1,3]]) # for example-1
+X0=np.array([1,1,1]) # OR X=np.random.rand(2)
+n = 3
 
 max_eigenvalue,max_eigenvector = power_method(A,X0,n)
 print(max_eigenvalue)
