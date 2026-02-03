@@ -9,7 +9,7 @@ def power_method(A,X0,n):
     return eigenvalue, X
 
 A=np.array([[2,-12],[1,-5]]) # for example-1
-X0=np.array([[1],[1]]) # OR X=np.random.rand(2,1)
+X0=np.array([1,1]) # OR X=np.random.rand(2)
 n = 10000
 
 max_eigenvalue,max_eigenvector = power_method(A,X0,n)
