@@ -1,34 +1,41 @@
 #include <stdio.h>
 
-int max(int a, int b) {
-    return (a > b) ? a : b;
+// Function to find maximum of two numbers
+int max(int a, int b){
+    if(a > b)
+        return a;
+    else
+        return b;
 }
 
-int knapsack(int W, int wt[], int val[], int n) {
-    int dp[n + 1][W + 1];
-    
-    for (int i = 0; i <= n; i++) {
-        for (int w = 0; w <= W; w++) {
-            if (i == 0 || w == 0)
-                dp[i][w] = 0;
-            else if (wt[i - 1] <= w)
-                dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], 
-                               dp[i - 1][w]);
+int main(){
+
+    int n = 4;                 // number of items
+    int W = 7;                 // knapsack capacity
+
+    int weight[] = {1,3,4,5};
+    int value[]  = {1,4,5,7};
+
+    int T[10][10];             // DP table
+
+    // Base Condition
+    for(int i=0;i<=n;i++){
+        for(int j=0;j<=W;j++){
+
+            if(i==0 || j==0)
+                T[i][j] = 0;
+
+            // Apply Formula
+            else if(weight[i-1] <= j)
+                T[i][j] = max(T[i-1][j],
+                              value[i-1] + T[i-1][j-weight[i-1]]);
+
             else
-                dp[i][w] = dp[i - 1][w];
+                T[i][j] = T[i-1][j];
         }
     }
-    
-    return dp[n][W];
-}
 
-int main() {
-    int val[] = {60, 100, 120};
-    int wt[] = {10, 20, 30};
-    int W = 50;
-    int n = 3;
-    
-    printf("Maximum value: %d\n", knapsack(W, wt, val, n));
-    
+    printf("Maximum Profit = %d", T[n][W]);
+
     return 0;
 }
