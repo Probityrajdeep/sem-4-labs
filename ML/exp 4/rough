@@ -1,0 +1,55 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix
+import math
+
+# Load the dataset
+df = pd.read_csv(r"E:\sem 4 labs\ML\Iris.csv")
+
+# Separate features and target
+# Display dataset info
+print(df.head())
+print(df.info())
+print(df.describe())
+X = df.iloc[:, :-1].values  # Features
+y = df.iloc[:, -1].values   # Target (Species)
+
+# Split into 80% training and 20% testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# KNN Implementation
+class KNN:
+    def __init__(self, k=3):
+        self.k = k
+    
+    def euclidean_distance(self, x1, x2):
+        # Calculate Euclidean distance: sqrt((x1-x2)^2 + (y1-y2)^2 + ... + (n1-n2)^2)
+        return math.sqrt(sum((a - b) ** 2 for a, b in zip(x1, x2)))
+    
+    def predict(self, X_test):
+        predictions = []
+        for test_point in X_test:
+            # Calculate distances to all training points
+            distances = [(self.euclidean_distance(test_point, train_point), label) 
+                        for train_point, label in zip(X_train, y_train)]
+            
+            # Sort by distance and get k nearest neighbors
+            distances.sort(key=lambda x: x[0])
+            neighbors = distances[:self.k]
+            
+            # Get most common label among neighbors
+            labels = [label for _, label in neighbors]
+            prediction = max(set(labels), key=labels.count)
+            predictions.append(prediction)
+        
+        return np.array(predictions)
+
+# Train and test
+knn = KNN(k=3)
+predictions = knn.predict(X_test)
+
+# Evaluate
+accuracy = accuracy_score(y_test, predictions)
+print(f"Accuracy: {accuracy * 100:.2f}%")
+print(f"Confusion Matrix:\n{confusion_matrix(y_test, predictions)}")
