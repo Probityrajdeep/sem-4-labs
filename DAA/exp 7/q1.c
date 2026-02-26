@@ -1,16 +1,13 @@
 #include <stdio.h>
-#define V 5
-#define INF 9999
+#include <limits.h>
+#define V 5   // A, B, C, D, E
 
 // Function to find vertex with minimum distance
-int minDistance(int dist[], int visited[])
-{
-    int min = INF, min_index;
+int minDistance(int dist[], int visited[]) {
+    int min = INT_MAX, min_index;
 
-    for (int v = 0; v < V; v++)
-    {
-        if (visited[v] == 0 && dist[v] <= min)
-        {
+    for (int v = 0; v < V; v++) {
+        if (visited[v] == 0 && dist[v] <= min) {
             min = dist[v];
             min_index = v;
         }
@@ -18,54 +15,71 @@ int minDistance(int dist[], int visited[])
     return min_index;
 }
 
-// Dijkstra function
-void dijkstra(int graph[V][V], int src)
-{
-    int dist[V];      // Distance array
-    int visited[V];   // Visited array
+// Function to print path recursively
+void printPath(int parent[], int j) {
+    if (parent[j] == -1)
+        return;
 
-    // Initialize distances and visited
-    for (int i = 0; i < V; i++)
-    {
-        dist[i] = INF;
+    printPath(parent, parent[j]);
+    printf(" -> %c", j + 'A');
+}
+
+// Dijkstra Algorithm
+void dijkstra(int graph[V][V], int src) {
+
+    int dist[V];        // Shortest distances
+    int visited[V];     // Visited set
+    int parent[V];      // To store shortest path
+
+    for (int i = 0; i < V; i++) {
+        dist[i] = INT_MAX;
         visited[i] = 0;
+        parent[i] = -1;
     }
 
-    dist[src] = 0;   // Distance of source is 0
+    dist[src] = 0;
 
-    for (int count = 0; count < V - 1; count++)
-    {
+    for (int count = 0; count < V - 1; count++) {
+
         int u = minDistance(dist, visited);
         visited[u] = 1;
 
-        for (int v = 0; v < V; v++)
-        {
+        for (int v = 0; v < V; v++) {
+
             if (!visited[v] && graph[u][v] &&
-                dist[u] != INF &&
-                dist[u] + graph[u][v] < dist[v])
-            {
+                dist[u] != INT_MAX &&
+                dist[u] + graph[u][v] < dist[v]) {
+
+                parent[v] = u;
                 dist[v] = dist[u] + graph[u][v];
             }
         }
     }
 
-    // Print result
-    printf("Vertex\tDistance from Source\n");
-    for (int i = 0; i < V; i++)
-        printf("%d \t %d\n", i, dist[i]);
+    // Printing output like slide
+    printf("Vertex\tDistance\tPath\n");
+
+    for (int i = 0; i < V; i++) {
+        printf("%c\t%d\t\t%c", i + 'A', dist[i], src + 'A');
+        printPath(parent, i);
+        printf("\n");
+    }
 }
 
-int main()
-{
+int main() {
+
     int graph[V][V] = {
-        {0, 10, 0, 30, 100},
-        {10, 0, 50, 0, 0},
-        {0, 50, 0, 20, 10},
-        {30, 0, 20, 0, 60},
-        {100, 0, 10, 60, 0}
+        //A  B  C  D  E
+        { 0, 3, 1, 0, 0 }, // A
+        { 3, 0, 7, 5, 1 }, // B
+        { 1, 7, 0, 2, 0 }, // C
+        { 0, 5, 2, 0, 7 }, // D
+        { 0, 1, 0, 7, 0 }  // E
     };
 
-    dijkstra(graph, 0);
+    int source = 2;   // C
+
+    dijkstra(graph, source);
 
     return 0;
 }
