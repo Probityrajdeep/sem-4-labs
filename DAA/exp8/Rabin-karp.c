@@ -21,11 +21,9 @@ int main() {
     n = strlen(T);
     m = strlen(P);
 
-    // h = d^(m-1) mod q
     for(i = 0; i < m-1; i++)
         h = (h * d) % q;
-
-    // preprocessing
+        
     for(i = 0; i < m; i++) {
         p = (d * p + P[i]) % q;
         t = (d * t + T[i]) % q;
