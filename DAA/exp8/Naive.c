@@ -34,7 +34,7 @@ int main() {
     if(!found)
         printf("Pattern not found\n");
 
-    end = clock();   // end time
+    end = clock();
 
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Execution Time: %f seconds\n", time_taken);
