@@ -1,59 +1,56 @@
 #include <stdio.h>
 #include <string.h>
-#include <time.h>
+#include <math.h>
 
 #define d 256
 
 int main() {
-    char text[100], pattern[100];
-    int i, j, n, m, p = 0, t = 0, h = 1;
-    int q = 101;  
-    clock_t start, end;
-    double time_taken;
 
-    printf("Enter the text: ");
-    scanf("%s", text);
+    char T[100], P[100];
+    int n, m, h = 1;
+    int p = 0, t = 0;
+    int q = 101;
+    int i, s, j;
 
-    printf("Enter the pattern: ");
-    scanf("%s", pattern);
+    printf("Enter Text: ");
+    scanf("%s", T);
 
-    start = clock();
+    printf("Enter Pattern: ");
+    scanf("%s", P);
 
-    n = strlen(text);
-    m = strlen(pattern);
+    n = strlen(T);
+    m = strlen(P);
 
+    // h = d^(m-1) mod q
     for(i = 0; i < m-1; i++)
         h = (h * d) % q;
 
+    // preprocessing
     for(i = 0; i < m; i++) {
-        p = (d * p + pattern[i]) % q;
-        t = (d * t + text[i]) % q;
+        p = (d * p + P[i]) % q;
+        t = (d * t + T[i]) % q;
     }
 
-    for(i = 0; i <= n - m; i++) {
+    // matching
+    for(s = 0; s <= n - m; s++) {
 
         if(p == t) {
             for(j = 0; j < m; j++) {
-                if(text[i+j] != pattern[j])
+                if(T[s + j] != P[j])
                     break;
             }
 
             if(j == m)
-                printf("Pattern found at position %d\n", i);
+                printf("Pattern occurs with shift %d\n", s);
         }
 
-        if(i < n - m) {
-            t = (d * (t - text[i] * h) + text[i + m]) % q;
+        if(s < n - m) {
+            t = (d * (t - T[s] * h) + T[s + m]) % q;
 
             if(t < 0)
                 t = t + q;
         }
     }
-
-    end = clock();
-
-    time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-    printf("Execution Time: %f seconds\n", time_taken);
 
     return 0;
 }
